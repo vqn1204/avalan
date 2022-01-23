@@ -1,0 +1,6 @@
+<h1 class="text-3xl font-bold text-slate-100 my-6">Posts</h1>
+<div class="columns-1" *ngIf="posts$ | async as posts">
+  <ng-container *ngFor="let post of posts">
+    <app-post-card [post]="post"></app-post-card>
+  </ng-container>
+</div>

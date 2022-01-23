@@ -1,0 +1,6 @@
+<h1 class="text-3xl font-bold text-slate-100 my-6">Users</h1>
+<div class="columns-2" *ngIf="users$ | async as users">
+  <ng-container *ngFor="let user of users">
+    <app-user-card [user]="user"></app-user-card>
+  </ng-container>
+</div>
