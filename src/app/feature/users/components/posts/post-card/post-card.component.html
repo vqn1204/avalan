@@ -1,8 +1,25 @@
-<div
-  class="bg-gradient-to-r from-slate-200 to-slate-400 mb-7 rounded p-5 hover:ring ring-sky-400"
->
-  <div>
+<div class="bg-gradient-to-r from-slate-200 to-slate-400 mb-7 rounded p-5">
+  <div class="mb-5">
     <h3 class="text-lg font-semibold">{{ post.title }}</h3>
     <p>{{ post.body }}</p>
+    <button
+      *ngIf="!showComments"
+      (click)="getComments(post.id)"
+      class="rounded bg-sky-600 py-1 px-2 mt-3 hover:bg-sky-700"
+    >
+      View Comments
+    </button>
+    <button
+      (click)="hideComments()"
+      class="rounded bg-sky-600 py-1 px-2 mt-3 hover:bg-sky-700"
+      *ngIf="showComments"
+    >
+      Hide Comments
+    </button>
   </div>
+  <ng-container *ngIf="comments$ | async as comments">
+    <ng-container *ngIf="showComments">
+      <app-comments [comments]="comments"></app-comments>
+    </ng-container>
+  </ng-container>
 </div>
